@@ -8,8 +8,7 @@ import Menulcon from '@material-ui/icons/Menu';
 import { Table, TableRow, TableCell, TableHead, TableBody} from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 import { Link } from 'react-router-dom';
-import DateFnsUtils from '@date-io/date-fns';
-import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+import TextField from '@material-ui/core/TextField';
 
 const styles ={
     root:{
@@ -21,8 +20,21 @@ const styles ={
     link:{
         textDecoration:'none',
         color:'black'
+    },
+    container:{
+        display: 'flex',
+        flexWrap: 'wrap'
+    },
+    textField:{
+        width:200
     }
 };
+const dateNow = new Date();
+const year = dateNow.getFullYear();
+const monthWithOffset = dateNow.getUTCMonth()+1;
+const month = monthWithOffset.toString().length < 2 ? `0${monthWithOffset}` : monthWithOffset;
+const date = dateNow.getUTCDate().toString().length < 2 ? `0${dateNow.getUTCDate()}` : dateNow.getUTCDate();
+const dateInput = `${year}-${month}-${date}`;
 
 
 class Display extends Component {
@@ -52,9 +64,18 @@ class Display extends Component {
                     </Drawer>
                 </div>
                 <div>
-                    <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                        
-                    </MuiPickersUtilsProvider>
+                    <form className={classes.container} noValidate>
+                        <TextField
+                            id="date"
+                            label="day"
+                            type="date"
+                            defaultValue={dateInput}
+                            className={classes.textField}
+                            InputLabelProps={{
+                                shrink:true,
+                            }}
+                        />
+                    </form>
                 </div>
                 <div>
                     <Table>

@@ -4,7 +4,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Drawer from '@material-ui/core/Drawer';
 import MenuItem from '@material-ui/core/MenuItem';
 import IconButton from '@material-ui/core/IconButton';
-import Menulcon from '@material-ui/icons/Menu';
+import {Menu, Add} from '@material-ui/icons';
 import { Table, TableRow, TableCell, TableHead, TableBody} from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 import { Link } from 'react-router-dom';
@@ -15,6 +15,9 @@ const styles ={
     },
     menuButton:{
         marginRight:'auto'
+    },
+    addButton:{
+        marginLeft:'auto'
     },
     link:{
         textDecoration:'none',
@@ -37,8 +40,9 @@ class Display extends Component {
             <Box>
                 <div className={classes.root}>
                     <AppBar position="static">
-                        <IconButton className={classes.menuButton} color="inherit" onClick={this.handleDrawerToggle}>
-                            <Menulcon />
+                        <IconButton  color="inherit" >
+                            <Menu className={classes.menuButton} onClick={this.handleDrawerToggle} />
+                            <Add className={classes.addButton} />
                         </IconButton>
                     </AppBar>
                     <Drawer open={this.state.toggle}>
@@ -56,7 +60,7 @@ class Display extends Component {
                                 <TableCell id="tableHC">職級</TableCell>
                                 <TableCell id="tableHC">名前</TableCell>
                                 <TableCell id="tableHC">今日の勤務状態</TableCell>
-                                <TableCell id="tableHC">出勤場所</TableCell>
+                                <TableCell id="tableHCL">出勤場所</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
