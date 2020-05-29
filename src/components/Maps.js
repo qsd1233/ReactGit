@@ -23,6 +23,6 @@ export class Maps extends Component {
     }
 }
 
-export default GoogleApiWrapper({apiKey:'AIzaSyDzgfN20FOQ-kVXmWgEgUJer-joftHeYFs'})(Maps);
+export default GoogleApiWrapper({apiKey:'you key'})(Maps);
 
 
